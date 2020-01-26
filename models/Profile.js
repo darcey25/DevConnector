@@ -33,7 +33,7 @@ const ProfileSchema = new mongoose.Schema({
 			title: {
 				type: String,
 				required: true
-			}.
+			},
 			company: {
 				type: String,
 				required: true
@@ -110,4 +110,4 @@ const ProfileSchema = new mongoose.Schema({
 	}
 });
 
-modue.exports = Profile = mongoose.model('profile, ProfileSchema');
+module.exports = Profile = mongoose.model('profile', ProfileSchema);
