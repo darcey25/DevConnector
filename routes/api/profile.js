@@ -21,7 +21,7 @@ router.get('/me', auth, async (req, res) => {
 
 	} catch (err) {
 		console.error(err.message);
-		rest.status(500).send('Server Error');
+		res.status(500).send('Server Error');
 	}
 });
 
@@ -63,7 +63,7 @@ router.post('/', [auth, [
 	if (status) profileFields.status = status;
 	if (githubusername) profileFields.githubusername = githubusername;
 	if (skills) {
-		profileFields.skills = skills.split(',').map(skill => skill.trim());
+		profileFields.skills = String(skills).split(',').map(skill => skill.trim());
 	}
 
 	// Build Social object
@@ -93,8 +93,6 @@ router.post('/', [auth, [
 		console.error(err.message);
 		res.status(500).send('Server Error');
 	}
-
-	res.send('Hello');
 });
 
 module.exports = router;
